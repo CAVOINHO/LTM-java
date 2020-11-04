@@ -9,27 +9,25 @@ class PhucVu extends Thread {
       s = s1;
    }
 
-   public static boolean isNumeric(String strNum) {
-      if (strNum == null) {
-         return false;
-      }
-      try {
-         double d = Double.parseDouble(strNum);
-      } catch (NumberFormatException nfe) {
-         return false;
-      }
-      return true;
-   }
+   // public static boolean isNumeric(String strNum) {
+   //    if (strNum == null) {
+   //       return false;
+   //    }
+   //    try {
+   //       double d = Double.parseDouble(strNum);
+   //    } catch (NumberFormatException nfe) {
+   //       return false;
+   //    }
+   //    return true;
+   // }
 
    public boolean check(String str) {
-      try {
-         if(isNumeric(numberPhone) && isNumeric(password)) {
+         if(isNumeric(numberPhone)) {
             return true;
          }
          else {
             return false;
          }
-      }
       return true;
    }
 
@@ -38,7 +36,7 @@ class PhucVu extends Thread {
          InputStream is = s.getInputStream();
          OutputStream os = s.getOutputStream();
          Scanner sc = new Scanner(is);
-         PrintWriter pw = new PrintWriter(os, true);
+         PrintWriter pw = new PrintWriter(os);
 
          while(true) {
             String numberPhone = sc.nextLine();
@@ -46,8 +44,11 @@ class PhucVu extends Thread {
 
             if(numberPhone.equals("EXIT") || password.equals("EXIT")) break;
 
+            System.out.println("SDT " + numberPhone);
+            System.out.println("Mat khau " + password);
+            
             String ketqua = new String();
-            if(ketqua.check(numberPhone, password)){
+            if(ketqua.check(numberPhone)) {
                System.out.println("Ket noi thanh cong");
             }
             else {
@@ -62,7 +63,6 @@ class PhucVu extends Thread {
       }
    }
 }
-
 public class testServerSS {
    public static void main(String[] args) {
       try {

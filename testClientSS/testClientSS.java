@@ -10,7 +10,7 @@ public class testClientSS {
          InputStream is = s.getInputStream();
          OutputStream os = s.getOutputStream();
          Scanner sc = new Scanner(is);
-         PrintWriter pw = new PrintWriter(os, true);
+         PrintWriter pw = new PrintWriter(os);
 
          while(true) {
             Scanner kb = new Scanner(System.in);
@@ -21,10 +21,16 @@ public class testClientSS {
             
             pw.println(numberPhone);
             pw.println(password);
+            pw.flush();
 
+            if(numberPhone.equals("EXIT")) {
+					break;
+            }
+            
             String ketqua = sc.nextLine();
             System.out.println(ketqua + "!");
          }
+
          s.close();
       }
       catch(IOException e) {

@@ -31,7 +31,7 @@ public class TachTenClient {
 		catch(IOException e) {
 			System.out.println("Loi nhap xuat");
 		}
-		
+
 
 	}
 
