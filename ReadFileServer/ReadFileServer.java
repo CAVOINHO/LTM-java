@@ -7,23 +7,23 @@ public class ReadFileServer {
 		try {
 			ServerSocket ss = new ServerSocket(10);
 			System.out.println("Server dang khoi dong");
-			while(true) {
+			while (true) {
 				Socket s = ss.accept();
-				
+
 				InputStream is = s.getInputStream();
 				OutputStream os = s.getOutputStream();
 				Scanner sc = new Scanner(is);
 				PrintWriter pw = new PrintWriter(os);
-				
+
 				String caulenh = sc.nextLine();
 				String tenfile = caulenh.substring(5);
-				
+
 				File f = new File(tenfile);
-				int n = (int)f.length();
-				if( f.isFile() && f.exists() ) {
+				int n = (int) f.length();
+				if (f.isFile() && f.exists()) {
 					pw.println("" + n);
 					pw.flush();
-					if( n != 0) {
+					if (n != 0) {
 						byte b[] = new byte[n];
 						FileInputStream f1 = new FileInputStream(tenfile);
 						DataInputStream dis = new DataInputStream(f1);
@@ -34,14 +34,13 @@ public class ReadFileServer {
 						dos.write(b);
 						System.out.println("Da gui file thanh cong");
 					}
-				}
-				else {
-					pw.println("-1"); pw.flush();
+				} else {
+					pw.println("-1");
+					pw.flush();
 				}
 				s.close();
 			}
-		}
-		catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println("Loi nhap xuat");
 		}
 	}
