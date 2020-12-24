@@ -27,7 +27,7 @@ public class trainClient {
             DatagramPacket output = new DatagramPacket(outputFile, len, dc, congUDP);
             ds.send(output);
 
-            // 4, 5Nhan tu UDP Server
+            // 4, 5. Nhan tu UDP Server
             byte inputFile1[] = new byte[60000];
             byte inputFile2[] = new byte[60000];
             DatagramPacket input1 = new DatagramPacket(inputFile1, 60000);
@@ -46,19 +46,18 @@ public class trainClient {
             InputStream is = s.getInputStream();
             OutputStream os = s.getOutputStream();
             Scanner sc = new Scanner(is);
-            PrintWriter pw = new PrintWriter(os);
+            PrintWriter pw = new PrintWriter(os, true);
 
             // 7.Gui mat khau qua Server
             String a = "123";
-            pw.println(matkhau);
-            pw.flush();
+            pw.println(a);
 
-            // 8.9.10 Nhan ket qua tu Server
+            // 8.9.10. Nhan ket qua tu Server
             String ketquaTCP = sc.nextLine();
-            int n = Integer.parseInt(ketquaTCP);
             if (ketquaTCP.equals("ERR")) {
                 System.out.println("Mat khau sai!");
             } else {
+                int n = Integer.parseInt(ketquaTCP);
                 FileOutputStream f = new FileOutputStream("ketqua.txt");
                 byte b[] = new byte[n];
                 System.out.println("Kich thuoc file " + n);

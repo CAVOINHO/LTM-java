@@ -30,7 +30,7 @@ public class trainServer {
                 InputStream is = s.getInputStream();
                 OutputStream os = s.getOutputStream();
                 Scanner sc = new Scanner(is);
-                PrintWriter pw = new PrintWriter(os);
+                PrintWriter pw = new PrintWriter(os, true);
                 // Nhan tu client
                 String pass = sc.nextLine();
                 System.out.println("Mat khau la: " + pass);
@@ -40,7 +40,7 @@ public class trainServer {
                     int n = (int) f.length();
                     System.out.println("kich thuoc: " + n);
                     pw.println("" + n);
-                    pw.flush();
+
                     byte b[] = new byte[n];
                     FileInputStream f1 = new FileInputStream("testing.txt");
                     DataInputStream dis = new DataInputStream(f1);
@@ -52,7 +52,6 @@ public class trainServer {
                     System.out.println("Da gui file thanh cong");
                 } else {
                     pw.println("ERR");
-                    pw.flush();
                 }
                 s.close();
             }
