@@ -50,6 +50,7 @@ public class trainClient {
                 System.out.println("Chuoi dung!");
             }
             s.close();
+			ds.close();
         }
 
         catch(Exception e) {

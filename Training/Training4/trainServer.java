@@ -14,12 +14,12 @@ public class trainServer {
             Scanner sc = new Scanner(is);
             PrintWriter pw = new PrintWriter(os, true);
 
-            String hoten = sc.nextLine();
             String local = sc.nextLine();
-            System.out.println("hoten: " + hoten);
-            String ten = hoten.substring(hoten.lastIndexOf(" ") + 1);
-            pw.println(ten);
+            System.out.println("Dia chi client: " + local);
+
+            String matkhau = "kien123";
             pw.println(port);
+            pw.println(matkhau);
 
             DatagramSocket ds = new DatagramSocket(port);
             System.out.println("UDP da khoi tao");

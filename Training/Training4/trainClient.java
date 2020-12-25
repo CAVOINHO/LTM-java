@@ -17,30 +17,28 @@ public class trainClient {
             OutputStream os = s.getOutputStream();
             Scanner sc = new Scanner(is);
             PrintWriter pw = new PrintWriter(os, true);
-            System.out.print("Nhap ho va ten: ");
-            String hoten = kb.nextLine();
-            System.out.print("Nhap dia chi: ");
-            pw.println(hoten);
-            pw.println(diachi);
 
-            String ten = sc.nextLine();
-            String congUDP = sc.nextLine();
-            System.out.println("Ten: " + ten);
+            String diachiClient = InetAddress.getLocalHost().getHostAddress();
+            pw.println(diachiClient);
+
+            String input1 = sc.nextLine();
+            String input2 = sc.nextLine();
+            int congUDP = Integer.parseInt(input1);
+            String matkhau = input2.toString();
+
             System.out.println("Cong: " + congUDP);
-            int cong = Integer.parseInt(congUDP);
+            System.out.println("Mat khau: " + matkhau);
 
             DatagramSocket ds = new DatagramSocket();
-            String matkhau = "123";
-            byte op[] = matkhau.getBytes();
-            int len = op.length;
-            InetAddress x = InetAddress.getByName(diachi);
-            DatagramPacket oip = new DatagramPacket(op, len, x, cong);
-            ds.send(oip);
+            byte b[] = matkhau.getBytes();
+            int len = b.length;
+            InetAddress dc = InetAddress.getByName(diachi);
+            DatagramPacket op = new DatagramPacket(b, len, dc, congUDP);
+            ds.send(op);
 
-            byte b[] = new byte[60000];
-            DatagramPacket ip = new DatagramPacket(b, 60000);
+            byte b1[] = new byte[60000];
+            DatagramPacket ip = new DatagramPacket(b1, 60000);
             ds.receive(ip);
-            System.out.println("file: " + ip);
 
             byte input[] = ip.getData();
             int n = ip.getLength();

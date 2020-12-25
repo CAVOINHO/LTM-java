@@ -32,12 +32,15 @@ public class trainClient {
             byte inputFile2[] = new byte[60000];
             DatagramPacket input1 = new DatagramPacket(inputFile1, 60000);
             DatagramPacket input2 = new DatagramPacket(inputFile2, 60000);
+
             ds.receive(input1);
             ds.receive(input2);
+
             String ketqua1 = new String(input1.getData(), 0, input1.getLength());
             String ketqua2 = new String(input2.getData(), 0, input2.getLength());
             int congTCP = Integer.parseInt(ketqua1);
             String matkhau = ketqua2.toString();
+
             System.out.println("Cong cua TCP Socket: " + congTCP);
             System.out.println("Mat khau: " + matkhau);
 
